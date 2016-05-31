@@ -1,0 +1,62 @@
+The Identity Hub PHP server side SDK
+Summary
+In this topic you will get an overview how to use PHP server side SDK to connect to The Identity Hub. 
+
+Contents
+* Installing the SDK
+* Configuration
+* Initialization in application
+* Authenticate
+* Getting information on the current user
+* Getting information on the current user's friends
+* Getting information on the current user's accounts
+
+Installing the SDK
+To install the SDK, just extract and add SDK folder to directory which you want to use in your project.
+
+Configuration
+Find config.php file and according to provided example setup configuration variables:
+1. For baseUrl enter your Tenant URL at The Identity Hub.
+2. For clientId enter your Application Client Id at The Identity Hub.
+3. For redirectUri fill up the path to callback.php at your SDK installation directory.
+4. For signOutUri fill up the path to callback.php at your SDK installation directory.
+5. Enter signOutRedirectUri as you wish.
+
+Initialization in application
+To initialize SDK in every application file where you want to use it at the top of the file there should be:
+	require_once '[Your path to SDK]/theidentityhub.php';
+	session_start();
+	$ih = new TheIdentityHub;
+The last line will initialize object which will pickup configuration and later when user is logged on it will load main identity data.
+
+Authenticate
+The method getSignInURL() returns the link which will redirect to The Identity Hub's Authentication page:
+	$ih-> getSignInURL();
+and also there is a method to get Sign out link:
+	$ih-> getSignOutURL();
+which you can use anywhere in your application.
+
+Getting information on the current user
+The information about current user is loaded automatically with initialization and stored at main object property identity which is stdClass object as specified in The Identity Hub API https://www.theidentityhub.com/hub/Documentation/#GET-tenant-api-identity-v1.
+
+Getting information on the current user's friends
+The information about current user's friends is accessible with method:
+	$ih->getFriends()
+This method will fill up main object property $ih->friends with the array of object with friends data as specified in The Identity Hub API https://www.theidentityhub.com/hub/Documentation/#GET-tenant-api-identity-v1-friends_offset_limit
+
+Getting information on the current user's accounts
+The information about current user's accounts is accessible with method:
+	$ih->getAccounts()
+This method will fill up main object property $ih->accounts with the array of object with accounts data as specified in The Identity Hub API https://www.theidentityhub.com/hub/Documentation/#GET-tenant-api-identity-v1-accounts
+
+Getting information on the other users
+The information about other user data is accessible with methods:
+	$ih->getProfile([UserID])
+	$ih->getFriends([UserID])
+	$ih->getAccounts([UserID])
+which fill up corespodenting varibles in the main class
+	$ih->identityUser
+	$ih->friendsUser
+	$ih->accountsUser
+
+
