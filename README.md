@@ -24,5 +24,5 @@ Change the configuration as follows
 
 4. Navigate to the index.php page
 
-If you do not have already created an App see https://www.theidentityhub.com/hub/Documentation/#CreateAnApp.
+If you do not have already created an App see https://docs.theidentityhub.com/doc/Apps/Create-an-App.html.
 
