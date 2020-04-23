@@ -279,7 +279,7 @@
 					//if ( isset($data->access_token) && isset($data->token_type) && isset($data->expires_in) && isset($data->scope) && isset($data->refresh_token) ) {
 					if ( isset($data->access_token) && isset($data->token_type) && isset($data->expires_in) && isset($data->refresh_token) ) {
 						if ($this->setToken($data)) {
-							if ( (int) $check->resource_owner_identity_verified == 0) { $this->isVerified = false; } else { $this->isVerified = true; }
+							if ( (int) $data->resource_owner_identity_verified == 0) { $this->isVerified = false; } else { $this->isVerified = true; }
 							if ($this->debug) { $this->enqueueMsg("Token is refreshed by " . __FUNCTION__); }
 							return true;
 						}
