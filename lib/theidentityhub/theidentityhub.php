@@ -488,7 +488,7 @@
          		if( !curl_setopt ($ch, CURLOPT_POST, 1))                { $this->errors[] = "FAIL: curl_setopt(CURLOPT_POST)"; }
 			}
             
-            if (count($this->errors == 0)) { $result = curl_exec($ch); }
+            if (count($this->errors) === 0) { $result = curl_exec($ch); }
 
             curl_close($ch);
 						
